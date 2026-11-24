@@ -4715,3 +4715,18 @@ against this cycle's live lease (contrary to its own tick-type rule) and clobber
 - **These stay PROPOSED and unchanged:** threshold_sweep_no, the screener-outcomes refresh, P11, P8,
   P9, P4, P7, the subclass auto-tagger, P1, P2, P3(a), and the counterfactual end-date.
 - **No new hourly proposals.**
+
+## 2026-11-24 16:15Z - 22-day runner gap (new, PROPOSED/HIGH)
+
+- No cycle of any kind (FULL, LIGHT, TRIGGERED, or a cloud lease commit) landed on `origin/main`
+  between `616e4093` (2026-11-02T20:19Z, lease: cloud released) and `a26dcc4f`
+  (2026-11-24T16:09Z, lease: operator acquired). The operator lease pair at 2026-11-02T22:05Z
+  (`76e76642`/`52661099`) has no cycle between its two commits.
+- The cost: 3 bets and 101 forecasts settled with no retro. The AAA, JOLTS and RBA grading
+  windows the 11-02 schedule.json named went past ungraded. The 4-FULL/day pacing floor was
+  silently missed on about 22 days.
+- Likely cause, unverified from inside a cycle: the cloud routine stopped or lost its trigger
+  after the 11-02 20:40Z run. The operator release at 22:05Z also suggests a local run that ended
+  without cycling.
+- Ask: check the cloud routine's schedule and recent run history. Consider a liveness tripwire in
+  CI or watch.py that flags `origin/main` when it has had no `cycle:` commit for more than 6h.

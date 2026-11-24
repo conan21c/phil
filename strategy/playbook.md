@@ -8333,3 +8333,18 @@ with the one-liner in journal/retros/DEEP-2026-10-21.md.
   cited GasBuddy state nowcast, and then by at most half the gap.
   - Evidence: `93bdd88c982d` (+0.478), `e6aa609bcfaa` (+0.169), `c7f964d848cd` (+0.142).
   - At 3/3 this is not yet a rule. It takes no registry slot until it is graded.
+
+## 2026-11-24 16:15Z: JOLTS Sep bet lost, AAA Nov 3 miss (RETRO-20261124-1615)
+
+- **JOLTS ladders: the benchmark sd has to cover the prior-month revision, and the note must state
+  the revision size.** For `7f45e8fe6a72` (No >= 7.4M, est 0.863, lost) the benchmark was one
+  nowcast (LinkUp 7.05M) with sd 0.32M. BLS printed 7.523M, and August was revised from 7.07M to
+  ~7.19M (+0.12M). The ladder's 9 forecast rows all priced the level too low. Before a JOLTS bet,
+  check how big the last 3 prior-month revisions were and say in the rationale whether the sd
+  covers them. n=1 bet. This is a research check, not an estimation rule: it takes no registry
+  slot.
+- **AAA drift model: do not cite sd 0.8c.** The graded centre errors are 0.0 / 0.65 / 0.98 / 0.32 /
+  >=1.6 / 0.3 / ~1.0 / >=1.94c (Oct 18 to Nov 3). Nov 3 `208def9aa091` put 0.02 on < $4.15
+  (drift ctr -0.3c) and it resolved Yes. A note that uses the drift model must state the
+  empirical centre-error spread it assumes. AAA stays forecast-only. Nov 3 had a wide book, so the
+  10-30 tight-book tally stays at 3/3.
